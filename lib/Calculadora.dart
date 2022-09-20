@@ -13,7 +13,7 @@ class CalculadoraState extends State<Calculadora> {
         drawer: Drawer(),
         appBar: new AppBar(
           title: new Text(
-            'Calculadora - Simples',
+            'Calculadora - Simples :::',
             style: TextStyle(
               fontSize: 24,
             ),
@@ -166,8 +166,8 @@ class CalculadoraState extends State<Calculadora> {
       num2 = int.parse(t2.text);
       if (num1 % 2 && num2 % 2 == 0) {
         resultado12 = 'par';
-      // } else if (num1 % 2 && num2 % 2 != 0) {
-      //   resultado13 = 'impar';
+        // } else if (num1 % 2 && num2 % 2 != 0) {
+        //   resultado13 = 'impar';
       }
     });
   }
