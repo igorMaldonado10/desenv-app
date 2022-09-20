@@ -15,7 +15,7 @@ class CalculadoraState extends State<Calculadora> {
           title: new Text(
             'Calculadora - Simples :::',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 25,
             ),
           ),
         ),
