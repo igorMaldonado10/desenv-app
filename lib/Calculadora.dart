@@ -10,144 +10,139 @@ class CalculadoraState extends State<Calculadora> {
   Widget build(BuildContext context) {
     // ignore: unnecessary_new
     return new Scaffold(
-        drawer: Drawer(),
-        appBar: new AppBar(
-          title: new Text(
-            'Calculadora - Simples :::',
-            style: TextStyle(
-              fontSize: 24,
-            ),
+      drawer: Drawer(),
+      appBar: new AppBar(
+        title: new Text(
+          'Calculadora - Simples',
+          style: TextStyle(
+            fontSize: 25,
           ),
         ),
+      ),
+      // ignore: unnecessary_new
+      body: new Container(
+        padding: const EdgeInsets.all(40),
         // ignore: unnecessary_new
-        body: new Container(
-            padding: const EdgeInsets.all(40),
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Texto que mostra o resultado do cálculo
-                new Text(
-                  'Resultado: $resultado',
-                  style: new TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple),
-                ),
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    // Texto que mostra o resultado do cálculo
-                    new Text(
-                      'numero 1: $resultado12',
+        child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Texto que mostra o resultado do cálculo
+              // ignore: unnecessary_new
+              new Text(
+                'Resultado: ${resultado.toStringAsFixed(2)}',
+                style: new TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.purple),
+              ),
+
+              //Campo de Texto (input do valor 1)
+              new TextField /*Campo de texto*/ (
+                keyboardType: TextInputType.number,
+                decoration: new InputDecoration(hintText: 'Informe o valor 1:'),
+                controller: t1,
+              ),
+
+              //Campo de Texto (input do valor 2)
+              new TextField(
+                keyboardType: TextInputType.number,
+                decoration: new InputDecoration(hintText: 'Informe o valor 2:'),
+                controller: t2,
+              ),
+
+              // Espaçamento depois dos inputs
+              new Padding(padding: const EdgeInsets.only(top: 20)),
+              /*Apenas no topo 20 pixels de espaço*/
+
+              // Nova linha (row)
+              new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new MaterialButton(
+                    // child: new Text("+"),
+                    child: new Text(
+                      '+',
                       style: new TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                    new Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          // Texto que mostra o resultado do cálculo
-                          new Text(
-                            'numero 2: $resultado13',
-                            style: new TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.purple),
-                          ),
+                    color: Colors.blueAccent,
+                    onPressed: somar,
+                  ),
+                  new MaterialButton(
+                    // child: new Text("+"),
+                    child: new Text(
+                      'x',
+                      style: new TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    color: Colors.blueAccent,
+                    onPressed: multiplicar,
+                  ),
+                ],
+              ),
 
-                          //Campo de Texto (input do valor 1)
-                          new TextField /*Campo de texto*/ (
-                            keyboardType: TextInputType.number,
-                            decoration: new InputDecoration(
-                                hintText: 'Informe o valor 1:'),
-                            controller: t1,
-                          ),
+              new Padding(padding: const EdgeInsets.only(top: 20)),
 
-                          //Campo de Texto (input do valor 2)
-                          new TextField(
-                            keyboardType: TextInputType.number,
-                            decoration: new InputDecoration(
-                                hintText: 'Informe o valor 2:'),
-                            controller: t2,
-                          ),
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new MaterialButton(
+                      // child: new Text("-"),
+                      child: new Text(
+                        '-',
+                        style: new TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
 
-                          // Espaçamento depois dos inputs
-                          new Padding(padding: const EdgeInsets.only(top: 20)),
-                          /*Apenas no topo 20 pixels de espaço*/
+                      color: Colors.blueAccent,
+                      onPressed: subtrair,
+                    ),
+                    new MaterialButton(
+                        color: Colors.blueAccent,
+                        child: new Text(
+                          '/',
+                          style: new TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                        onPressed: divisao),
+                  ]),
 
-                          // Nova linha (row)
-                          new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              new MaterialButton(
-                                // child: new Text("+"),
-                                child: new Text(
-                                  '+',
-                                  style: new TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                color: Colors.blueAccent,
-                                onPressed: somar,
-                              ),
-                              new MaterialButton(
-                                color: Colors.blue,
-                                child: new Text(
-                                  '%',
-                                  style: new TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                                onPressed: resto,
-                              ),
-                            ],
-                          ),
+              new Padding(padding: const EdgeInsets.only(top: 20)),
 
-                          new Padding(padding: const EdgeInsets.only(top: 20)),
-
-                          new Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                new MaterialButton(
-                                  // child: new Text("-"),
-                                  child: new Text(
-                                    '-',
-                                    style: new TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-
-                                  color: Colors.blueAccent,
-                                  onPressed: subtrair,
-                                ),
-                                new MaterialButton(
-                                    color: Colors.blueAccent,
-                                    child: new Text(
-                                      '/',
-                                      style: new TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    ),
-                                    onPressed: divisao),
-                              ]),
-                        ]),
-                  ],
-                ),
-              ],
-            )));
+              new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new MaterialButton(
+                      color: Colors.grey,
+                      child: new Text(
+                        'Limpar',
+                        style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      onPressed: limpar)
+                ],
+              ),
+            ]),
+      ),
+    );
   } //Fecha o método Build
 
 // Atributos
-  var num1;
-  var num2;
-  var resultado = 0;
-  var resultado12;
-  var resultado13;
+  num num1 = 0;
+  num num2 = 0;
+  num resultado = 0;
 
   TextEditingController t1 = new TextEditingController(text: '');
   TextEditingController t2 = new TextEditingController(text: '');
@@ -156,21 +151,29 @@ class CalculadoraState extends State<Calculadora> {
     setState(() {
       num1 = num.parse(t1.text);
       num2 = num.parse(t2.text);
-      resultado = num1 + num2;
+      num resultado = num1 + num2;
     });
   }
 
-  void resto() {
+  void multiplicar() {
     setState(() {
-      num1 = int.parse(t1.text);
-      num2 = int.parse(t2.text);
-      if (num1 % 2 && num2 % 2 == 0) {
-        resultado12 = 'par';
-        // } else if (num1 % 2 && num2 % 2 != 0) {
-        //   resultado13 = 'impar';
-      }
+      num1 = num.parse(t1.text);
+      num2 = num.parse(t2.text);
+      resultado = num1 * num2;
     });
   }
+
+  // void resto() {
+  //   setState(() {
+  //     num1 = int.parse(t1.text);
+  //     num2 = int.parse(t2.text);
+  //     if (num1 % 2 && num2 % 2 == 0) {
+  //       resultado12 = 'par';
+  //       // } else if (num1 % 2 && num2 % 2 != 0) {
+  //       //   resultado13 = 'impar';
+  //     }
+  //   });
+  // }
 
   void subtrair() {
     setState(() {
